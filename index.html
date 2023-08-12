@@ -37,6 +37,38 @@
         recognition.start();
 
         });
+
+
+
+
+        const themeSelect = document.getElementById("ThemeSelect");
+        
+        // Function to apply the selected theme
+        function applyTheme(theme) {
+          const body = document.body;
+        
+          if (theme === "dark") {
+            body.classList.add("dark-theme");
+            isDarkTheme = true;
+          } else {
+            body.classList.remove("dark-theme");
+            isDarkTheme = false;
+          }
+        }
+        
+        // Event listener for theme selection dropdown
+        themeSelect.addEventListener("change", (event) => {
+          const selectedTheme = event.target.value;
+          applyTheme(selectedTheme);
+        });
+        
+        // Event listener for theme toggle button
+        themeToggleBtn.addEventListener("click", () => {
+          applyTheme(isDarkTheme ? "light" : "dark");
+        });
+        
+        // Apply the user's preferred theme initially
+        applyTheme(isDarkTheme ? "dark" : "light");
     </script>
 
 
@@ -45,7 +77,7 @@
 <body>
     <nav>
         <img class="logo" src="logo.png" alt="">
-        <h1>GIGA CHAT</h1>
+        <span>GIGA CHAT</span>
         <h2>Select a community</h2>
         <select id="commSelect">
         <option value="apple">Apple</option>
@@ -53,6 +85,12 @@
         <option value="orange">Orange</option>
         <option value="grape">Grape</option>
         <option value="kiwi">Kiwi</option>
+        </select>
+        <h2>Select color theme</h2>
+        <select id="ThemeSelect">
+        <option value="Drak">Dark</option>
+        <option value="light">Light</option>
+
         </select>
         <button class="openbtn" id="main" onclick="openNav()">&#9776; Chat Room</button>
     </nav>
@@ -63,8 +101,8 @@
         <form action="#" id="send-container">
             <textarea type="text" name="messageInp" id="messageInp"></textarea>
             <button class="btn" type="submit">Send</button>
-            <button class="btn2"><img class="img1" src="https://www.iconpacks.net/icons/4/free-icon-black-radio-microphone-14659.png" alt="Speak"></button>
         </form>
+        <button class="btn2"><img class="img1" src="https://www.iconpacks.net/icons/4/free-icon-black-microphone-14655.png" alt="Speak" width="50px" height="50px"></button>
     </div>
             
     <div id="mySidebar" class="sidebar">
