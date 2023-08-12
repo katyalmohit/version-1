@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIGA CHAT</title>
+    <script defer src="http://localhost:8000/socket.io/socket.io.js"></script>
+    <script defer src="js/client.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+
+        const startButton = document.getElementById('startButton');
+        const result = document.getElementById('inputTextArea'); 
+
+        const recognition = new webkitSpeechRecognition() ;
+        recognition.continuous = false;
+        recognition.interimResults = true;
+        recognition.lang = 'en-US';
+
+        recognition.onstart = () => {
+        startButton.innerText = 'Listening...';
+        console.log("Inside on start")
+        };
+
+        recognition.onend = () => {
+        startButton.innerText = 'Start Speech Recognition';
+        console.log("Inside on end")
+        };
+
+        recognition.onresult = event => {
+        const transcript = event.results[0][0].transcript;
+        result.value = transcript;
+        console.log(transcript)
+        };
+
+        startButton.addEventListener('click', () => {
+        recognition.start();
+
+        });
+    </script>
+
+
+</head>
+    
+<body>
+    <nav>
+        <img class="logo" src="logo.png" alt="">
+        <h1>GIGA CHAT</h1>
+        <h2>Select a community</h2>
+        <select id="commSelect">
+        <option value="apple">Apple</option>
+        <option value="banana">Banana</option>
+        <option value="orange">Orange</option>
+        <option value="grape">Grape</option>
+        <option value="kiwi">Kiwi</option>
+        </select>
+        <button class="openbtn" id="main" onclick="openNav()">&#9776; Chat Room</button>
+    </nav>
+       
+
+    <div class="container"></div> 
+    <div class="send">
+        <form action="#" id="send-container">
+            <input type="text" name="messageInp" id="messageInp">
+            <button class="btn" type="submit">Send</button>
+            <button class="btn2"><img class="img1" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Speaker_Icon.svg/2048px-Speaker_Icon.svg.png" alt="Speak"></button>
+        </form>
+    </div>
+            
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#">Text to speech</a>
+        <a href="#">Speech to text</a>
+        <a href="#">Color Contrast</a>
+      </div>
+      
+      
+</body>
+</html>
