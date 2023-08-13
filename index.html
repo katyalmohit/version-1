@@ -3,40 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GIGA CHAT</title>
+    <title>UniCHAT</title>
     <script defer src="http://localhost:8000/socket.io/socket.io.js"></script>
     <script defer src="js/client.js"></script>
     <link rel="stylesheet" href="css/style.css">
+    <script>
+      function changeLight(){
+    document.body.style.background = "linear-gradient(45deg,#ffffff, #555555)" ;
+}
+function changeDark(){
+    document.body.style.background = "linear-gradient(45deg,#010758, #490d61)" ;
+}
 
+    </script>
 </head>  
 <body>
     <div class="header">
-      <div class="logo">
+      <div class="logo-div">
           <img class="logo" src="logo.png" alt="logo">
       </div>
       <div class="heading">
-          <h1>GIGA CHAT</h1>
+          <h1>UniCHAT</h1>
       </div>
 
     <div id="mySidebar" class="sidebar">
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
       <ul>
-        <li>Text to speech<label class="switch1">
-          <input type="checkbox">
-          <span class="slider round"></span>
-        </label>
-      </li>
-      <li>Speech to text
-        <label class="switch">
-          <input type="checkbox">
-          <span class="slider round"></span>
-        </label>
-      </li>
-      <div class="dropdown">
+        <div class="dropdown">
         <button class="dropbtn">Theme</button>
         <div class="dropdown-content">
         <a href="#" onclick="changeLight()">Light Theme</a>
-        <a href="#">Dark Theme</a>
+        <a href="#" onclick="changeDark()">Dark Theme</a>
         </div>
       </div>
       
@@ -45,7 +42,7 @@
     </div>
     
     <div id="main">
-      <button class="openbtn" onclick="openNav()">&#9776; Open Sidebar</button>
+      <button class="openbtn" onclick="openNav()">&#9776; Settings</button>
     </div>
   </div>
 
@@ -59,7 +56,7 @@
 
         </form>
         <button class="btn btn2" id ='btn2'><img class="img1" src="mic.png" alt="listen" width="50px" height="50px"></button>
-        <button class="btn btn3" id ='btn3' disabled>Stop></button>
+        <button class="btn btn3" id ='btn3' disabled>Stop</button>
     </div>
 
       <script>
