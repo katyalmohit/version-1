@@ -64,8 +64,4 @@ function openNav() {
     document.getElementById("mySidebar").style.width = "0";
     document.getElementById("main").style.marginRight = "0";
   }
-document.getElementById("delhi").onclick = function(){
-    console.log("delhi");
-    document.getElementsByClassName("container").width = "0px";
-}
 
