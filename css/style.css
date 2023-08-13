@@ -1,231 +1,344 @@
 body{
-    height: 100vh;
-    background-image: linear-gradient(45deg,#010758, #490d61);
+  height: 100vh;
+  background-image: linear-gradient(45deg,#010758, #490d61);
+}
+.header {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  padding: 10px; 
+  background-color: rgba(30, 28, 28, 0.5);
+  border-radius: 20px;
 }
 
-.logo{
-    display: inline-block;
-    width: 200px;
-    height: 200px;
-    margin-top:-20px;
-    margin-bottom:-130px;
-    margin-left: -20px;
+.logo {
+  flex: 0 0 auto; 
+  margin-right: auto; 
+  width:25%;
+  height: 25%;
 }
-span{
-    margin-left:380px;
-    font-size: 30px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: aliceblue;
-    text-align: center;
-    padding: 10px;
-    background-color: rgba(54, 236, 212, 0.389);
-    border-radius: 10px;
-}
-h2{
-    font-size: 20px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: aliceblue;
-    margin-top:90px;
-}
-#commSelect {
-    width: 15%;
-    height: 40px;
-    border: 2px solid black;
-    border-radius: 6px;
-    font-size: 16px;
-    font-family: "Poppins", sans-serif;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    transition: background-color 0.3s; /* Add a smooth transition for the background color */
-  }
-  
-  /* Change background color on hover */
-  #commSelect:hover {
-    background-color: rgba(3, 249, 40, 0.7);
-  }
-  
-  /* Change background color when focused (dropdown is open) */
-  #commSelect:focus {
-    background-color: rgba(213, 15, 15, 0.7);
-  }
-  
-  /* Reset background color when dropdown is closed */
-  #commSelect:not(:focus) {
-    background-color: rgba(0, 0, 0, 0.5);
-  }
 
-  #ThemeSelect {
-    width: 15%;
-    height: 40px;
-    border: 2px solid black;
-    border-radius: 6px;
-    font-size: 16px;
-    font-family: "Poppins", sans-serif;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    transition: background-color 0.3s; /* Add a smooth transition for the background color */
-  }
-  
-  /* Change background color on hover */
-  #ThemeSelect:hover {
-    background-color: rgba(3, 249, 40, 0.7);
-  }
-  
-  /* Change background color when focused (dropdown is open) */
-  #ThemeSelect:focus {
-    background-color: rgba(213, 15, 15, 0.7);
-  }
-  
-  /* Reset background color when dropdown is closed */
-  #ThemeSelect:not(:focus) {
-    background-color: rgba(0, 0, 0, 0.5);
-  }  
-  
+.heading {
+  flex: 1; 
+  text-align: center; 
+  color:white;
+  font-family:"Poppins", sans-serif;
+}
+
+.sidebar {
+height: 100%; /* 100% Full-height */
+width: 0; /* 0 width - change this with JavaScript */
+position: fixed; /* Stay in place */
+z-index: 1; /* Stay on top */
+top: 0;
+right: 0;
+background-color: #111; /* Black*/
+overflow-x: hidden; /* Disable horizontal scroll */
+padding-top: 60px; /* Place content 60px from the top */
+transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+}
+
+/* The sidebar links */
+.sidebar a {
+padding: 8px 8px 8px 32px;
+text-decoration: none;
+font-size: 25px;
+color: #818181;
+display: block;
+transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidebar a:hover {
+color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidebar .closebtn {
+position: absolute;
+top: 0;
+right: 25px;
+font-size: 36px;
+margin-left: 50px;
+}
+
+/* The button used to open the sidebar */
+.openbtn {
+font-size: 20px;
+cursor: pointer;
+background-color: #111;
+color: white;
+padding: 10px 15px;
+float:right;
+border: none;
+border-radius:20px;
+}
+
+.openbtn:hover {
+background-color: #444;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+transition: margin-right .5s; /* If you want a transition effect */
+padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+.sidebar {padding-top: 15px;}
+.sidebar a {font-size: 18px;}
+}
+
+
+.sidebar {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0;
+  right: 0;
+  background-color: #111; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+}
+
+/* The sidebar links */
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-right: 50px;
+}
 .container{
-    max-width: 955px;
-    border: 2px solid black;
-    border-radius: 13px;
-    height: 60vh;
-    width: 120vh;
-    padding: 33px;
-    overflow-y: auto;
-    margin-top:-330px;
-    margin-right: 100px;
-    margin-bottom: 23px;
-    margin-left:250px;
-    background-color: rgba(0, 0, 0, 0.5);
+  border: 2px solid black;
+  border-radius: 13px;
+  height: 60vh;
+  width: 120vh;
+  padding: 33px;
+  overflow-y: auto;
+  /* margin-top:-330px; */
+  margin-top: 10px;
+  margin-right: 100px;
+  margin-bottom: 23px;
+  margin-left:250px;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .message{
-    background-color: rgb(211, 204, 204);
-    width: 24%;
-    padding: 10px;
-    margin: 17px 12px;
-    border: 2px solid black;
-    border-radius: 10px;
+  background-color: rgb(211, 204, 204);
+  width: 24%;
+  padding: 10px;
+  margin: 17px 12px;
+  border: 2px solid black;
+  border-radius: 10px;
 }
 .left{
-    float: left;
-    clear:both;
+  float: left;
+  clear:both;
 }
 
 .right{
-    float: right;
-    clear:both;
+  float: right;
+  clear:both;
 }
 
 #send-container{
-    display:block;
-    margin-left: 150px;
-    text-align: center;
-    max-width: 1085px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display:block;
+  margin-left: 150px;
+  text-align: center;
+  max-width: 1085px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #messageInp{
-    width: 50%;
-    border: 2px solid black;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 6px;
-    height: 34px;
-    font-size: 16px;
-    font-family: "Poppins", sans-serif;
+  width: 50%;
+  border: 2px solid black;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 6px;
+  height: 34px;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
 }
 
-.btn{
-    margin: 0 5px;
-    width: 9%;
-    cursor: pointer;
-    border: 2px solid black;
-    border-radius: 6px;
-    height: 34px;
-    background-color: black;
-    color: white;
+.btn1{
+  margin: 0 5px;
+  width: 9%;
+  cursor: pointer;
+  border: 2px solid black;
+  border-radius: 6px;
+  height: 34px;
+  background-color: black;
+  color: white;
+  margin-right:5px;
+}
+.btn3{
+  display: inline-block;
+  float:right;
+  margin-right:-100px;
+  margin-top: -38px;
+  margin-bottom: 10px;
+  height:33px;
+  width:50px;
+  border-radius: 6px;
+
+}
+.btn2{
+  display: inline-block;
+  float:right;
+  margin-right:440px;
+  margin-top: -38px;
+  margin-bottom: 10px;
+  border-radius: 6px;
 }
 
-.send .btn2{
-    display: inline-block;
-    float:right;
-    margin-right:260px;
-    margin-top: -38px;
-    margin-bottom: 10px;
-    border-radius: 6px;
-}
 
 /* The sidebar menu */
 .sidebar {
-    height: 100%; /* 100% Full-height */
-    width: 0; /* 0 width - change this with JavaScript */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
-    top: 0;
-    right: 0;
-    background-color: #111; /* Black*/
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 60px; /* Place content 60px from the top */
-    transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
-  }
-  
-  /* The sidebar links */
-  .sidebar a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-  }
-  
-  /* When you mouse over the navigation links, change their color */
-  .sidebar a:hover {
-    color: #f1f1f1;
-  }
-  
-  /* Position and style the close button (top right corner) */
-  .sidebar .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-  }
-  
-  /* The button used to open the sidebar */
- .openbtn {
-    font-size: 20px;
-    cursor: pointer;
-    background-color: #111;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    margin-top:-350px;
-    float:right;
-    border-radius: 13px;
-  }
-  
-  .openbtn:hover {
-    background-color: #444;
-  }
-  
-  /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
-  #main {
-    transition: margin-left .5s;
-    padding: 20px;
-  }
-  
-  /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-  @media screen and (max-height: 450px) {
-    .sidebar {padding-top: 15px;}
-    .sidebar a {font-size: 18px;}
-  }
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0;
+  right: 0;
+  background-color: #111; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.3s; /* 0.5 second transition effect to slide in the sidebar */
+}
+
+/* The sidebar links */
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/* The button used to open the sidebar */
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  /* margin-top:-350px; */
+  /* float:right; */
+  border-radius: 13px;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left .5s;
+  padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
 .img1{
-    width: 25px;
-    height: 25px;
+  width: 25px;
+  height: 25px;
+}
+.drop{
+  display:block;
+}
+.sidebar ul{
+  font-size: large;
+  color:white;
+}
+.sidebar ul li{
+  margin-top: 50px;
+  margin-bottom:-30px;
+}
+.dropbtn {
+  width : 170px;
+  background-color: #edf6f7;
+  color: black;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin-top:50px;
+  
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #666666;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 10px;
+}
+
+.dropdown-content a {
+  color:white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  border-radius: 10px;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+  color: black;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #3e3e41;
 }

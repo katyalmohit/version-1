@@ -7,111 +7,103 @@
     <script defer src="http://localhost:8000/socket.io/socket.io.js"></script>
     <script defer src="js/client.js"></script>
     <link rel="stylesheet" href="css/style.css">
-    <script>
 
-        const startButton = document.getElementById('startButton');
-        const result = document.getElementById('inputTextArea'); 
-
-        const recognition = new webkitSpeechRecognition() ;
-        recognition.continuous = false;
-        recognition.interimResults = true;
-        recognition.lang = 'en-US';
-
-        recognition.onstart = () => {
-        startButton.innerText = 'Listening...';
-        console.log("Inside on start")
-        };
-
-        recognition.onend = () => {
-        startButton.innerText = 'Start Speech Recognition';
-        console.log("Inside on end")
-        };
-
-        recognition.onresult = event => {
-        const transcript = event.results[0][0].transcript;
-        result.value = transcript;
-        console.log(transcript)
-        };
-
-        startButton.addEventListener('click', () => {
-        recognition.start();
-
-        });
-
-
-
-
-        const themeSelect = document.getElementById("ThemeSelect");
-        
-        // Function to apply the selected theme
-        function applyTheme(theme) {
-          const body = document.body;
-        
-          if (theme === "dark") {
-            body.classList.add("dark-theme");
-            isDarkTheme = true;
-          } else {
-            body.classList.remove("dark-theme");
-            isDarkTheme = false;
-          }
-        }
-        
-        // Event listener for theme selection dropdown
-        themeSelect.addEventListener("change", (event) => {
-          const selectedTheme = event.target.value;
-          applyTheme(selectedTheme);
-        });
-        
-        // Event listener for theme toggle button
-        themeToggleBtn.addEventListener("click", () => {
-          applyTheme(isDarkTheme ? "light" : "dark");
-        });
-        
-        // Apply the user's preferred theme initially
-        applyTheme(isDarkTheme ? "dark" : "light");
-    </script>
-
-
-</head>
-    
+</head>  
 <body>
-    <nav>
-        <img class="logo" src="logo.png" alt="">
-        <span>GIGA CHAT</span>
-        <h2>Select a community</h2>
-        <select id="commSelect">
-        <option value="apple">Apple</option>
-        <option value="banana">Banana</option>
-        <option value="orange">Orange</option>
-        <option value="grape">Grape</option>
-        <option value="kiwi">Kiwi</option>
-        </select>
-        <h2>Select color theme</h2>
-        <select id="ThemeSelect">
-        <option value="Drak">Dark</option>
-        <option value="light">Light</option>
+    <div class="header">
+      <div class="logo">
+          <img class="logo" src="logo.png" alt="logo">
+      </div>
+      <div class="heading">
+          <h1>GIGA CHAT</h1>
+      </div>
 
-        </select>
-        <button class="openbtn" id="main" onclick="openNav()">&#9776; Chat Room</button>
-    </nav>
+    <div id="mySidebar" class="sidebar">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <ul>
+        <li>Text to speech<label class="switch1">
+          <input type="checkbox">
+          <span class="slider round"></span>
+        </label>
+      </li>
+      <li>Speech to text
+        <label class="switch">
+          <input type="checkbox">
+          <span class="slider round"></span>
+        </label>
+      </li>
+      <div class="dropdown">
+        <button class="dropbtn">Theme</button>
+        <div class="dropdown-content">
+        <a href="#" onclick="changeLight()">Light Theme</a>
+        <a href="#">Dark Theme</a>
+        </div>
+      </div>
+      
+      </ul>
+      
+    </div>
+    
+    <div id="main">
+      <button class="openbtn" onclick="openNav()">&#9776; Open Sidebar</button>
+    </div>
+  </div>
+
        
 
     <div class="container"></div> 
     <div class="send">
         <form action="#" id="send-container">
-            <textarea type="text" name="messageInp" id="messageInp"></textarea>
-            <button class="btn" type="submit">Send</button>
+            <input type="text" name="messageInp" id="messageInp">
+            <button class="btn btn1" type="submit">Send</button>
+
         </form>
-        <button class="btn2"><img class="img1" src="https://www.iconpacks.net/icons/4/free-icon-black-microphone-14655.png" alt="Speak" width="50px" height="50px"></button>
+        <button class="btn btn2" id ='btn2'><img class="img1" src="mic.png" alt="listen" width="50px" height="50px"></button>
+        <button class="btn btn3" id ='btn3' disabled>Stop></button>
     </div>
+
+      <script>
+
+
+        const startButton = document.getElementById('btn2');
+        const stopButton = document.getElementById('btn3');
+        const result = document.getElementById('messageInp'); 
+    
+        
+        
+        let recognition;
+        
+        startButton.addEventListener('click', () => {
+            recognition = new webkitSpeechRecognition();
             
-    <div id="mySidebar" class="sidebar">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="#">Text to speech</a>
-        <a href="#">Speech to text</a>
-        <a href="#">Color Contrast</a>
-      </div>
-      
+            recognition.onstart = () => {
+                console.log('Listening started...');
+                startButton.disabled = true;
+                stopButton.disabled = false;
+            };
+            
+            recognition.onresult = event => {
+                const transcript = event.results[0][0].transcript;
+                result.value = transcript;
+                console.log(transcript)
+            };
+            
+            recognition.onend = () => {
+                console.log('Listening stopped.');
+                startButton.disabled = false;
+                stopButton.disabled = true;
+            };
+            
+            recognition.start();
+        });
+        
+        stopButton.addEventListener('click', () => {
+            if (recognition) {
+                recognition.stop();
+            }
+        });
+
+    </script>      
       
 </body>
 </html>
